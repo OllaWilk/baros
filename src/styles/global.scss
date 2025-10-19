@@ -1,0 +1,32 @@
+@forward "normalize";
+@forward "variables";
+@forward "mixins";
+@forward "theme";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  line-height: 1.5;
+  font-family: "Bricolage Grotesque", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg) 100%);
+  color: var(--text);
+  font-size: (14px * 1.1);
+  letter-spacing: 0.5px;
+  overflow: visible;
+  line-height: 1.7;
+  text-align: justify;
+  white-space: normal;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+}
