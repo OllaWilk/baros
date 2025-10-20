@@ -1,5 +1,6 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom';
-import { DrinkDetails, DrinksList, Favourites, NotFound } from './views';
+import { CocktailDetails, CocktailsList, Favourites, NotFound } from './views';
 import { Layout } from './Layout';
 
 const router = createBrowserRouter([
@@ -7,14 +8,20 @@ const router = createBrowserRouter([
     element: <Layout />,
     errorElement: <NotFound />,
     children: [
-      { index: true, loader: () => redirect('/drinks') },
-      { path: 'drinks', element: <DrinksList /> },
-      { path: 'drinks/:drinkId', element: <DrinkDetails /> },
-      { path: 'drinks/favourites', element: <Favourites /> },
+      { index: true, loader: () => redirect('/cocktails') },
+      { path: 'cocktails', element: <CocktailsList /> },
+      { path: 'cocktails/:coctailId', element: <CocktailDetails /> },
+      { path: 'cocktails/favourites', element: <Favourites /> },
     ],
   },
 ]);
 
+const queryClient = new QueryClient();
+
 export function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  );
 }
