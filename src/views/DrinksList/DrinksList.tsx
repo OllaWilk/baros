@@ -1,13 +1,5 @@
+import styles from './DrinksList.module.scss';
+
 export const DrinksList = () => {
-  return (
-    <div>
-      <ul>
-        <li>lorem</li> 
-        <li>lorem</li>
-        <li>lorem</li>
-        <li>lorem</li>
-        <li>lorem</li>
-      </ul>
-    </div>
-  );
+  return <div className={styles.drinksList}>Sorry, this page is under construction.</div>;
 };

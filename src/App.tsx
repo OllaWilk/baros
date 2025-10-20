@@ -1,35 +1,20 @@
-import {
-  createBrowserRouter,
-  Navigate,
-  RouterProvider,
-} from "react-router-dom";
-import logo from "./assets/logo_baros.png";
-import { Navbar } from "./components/Navbar/Navbar";
-import { DrinksList } from "./views/DrinksList/DrinksList";
-import { NotFound } from "./views/NotFound/NotFound";
+import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom';
+import { DrinkDetails, DrinksList, Favourites, NotFound } from './views';
+import { Layout } from './Layout';
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Navigate to="/drinks" />,
+    element: <Layout />,
     errorElement: <NotFound />,
-  },
-  {
-    path: "/drinks",
-    element: <DrinksList />,
+    children: [
+      { index: true, loader: () => redirect('/drinks') },
+      { path: 'drinks', element: <DrinksList /> },
+      { path: 'drinks/:drinkId', element: <DrinkDetails /> },
+      { path: 'drinks/favourites', element: <Favourites /> },
+    ],
   },
 ]);
 
 export function App() {
-  return (
-    <>
-      <Navbar />
-      <header className="container">
-        <div>
-          <img src={logo} alt={"logo"} /> <span>Witaj w BarOS</span>
-        </div>
-      </header>
-      <RouterProvider router={router} />
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
