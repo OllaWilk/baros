@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchCocktails } from '../../utils/http';
 
 import styles from './CocktailsList.module.scss';
+import { CoctailCart } from '../../components';
 
 export const CocktailsList = () => {
   const { data, isLoading, error } = useQuery({
@@ -17,7 +18,7 @@ export const CocktailsList = () => {
       <h2>Our Coctails</h2>
       <ul>
         {data?.map((el) => (
-          <li key={el.id}>{el.name}</li>
+          <CoctailCart key={el.id} {...el} />
         ))}
       </ul>
     </div>
