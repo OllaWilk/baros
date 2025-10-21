@@ -1,6 +1,7 @@
 import type { Cocktail } from '../../types/cocktails-types';
-import { Heart } from 'lucide-react';
 import styles from './CoctailCart.module.scss';
+import { FavouriteBtn } from '../FavouriteBtn/FavouriteBtn';
+import { Btn } from '../Btn/Btn';
 
 export const CoctailCart = ({ name, category, imageUrl, alcoholic }: Cocktail) => {
   const handleAddToFavorites = () => console.log('add to favourites');
@@ -8,19 +9,13 @@ export const CoctailCart = ({ name, category, imageUrl, alcoholic }: Cocktail) =
     <article className={styles.coctailCart}>
       <div className={styles.imageWrapper}>
         <img src={imageUrl} alt={name} />
-        <button
-          className={styles.favoriteBtn}
-          aria-label="Add to favorites"
-          onClick={handleAddToFavorites}
-        >
-          <Heart className={styles.heartIcon} />
-        </button>
+        <FavouriteBtn onClick={handleAddToFavorites} />
       </div>
       <div className={styles.content}>
         <h3 className={styles.name}>{name}</h3>
         <p className={styles.category}>{category}</p>
         <p className={styles.type}>{alcoholic ? 'Alcoholic' : 'Non-alcoholic'}</p>
-        <button className={styles.detailsBtn}>View details</button>
+        <Btn text={'View details'} url={`/cocktails/${name}`} />
       </div>
     </article>
   );

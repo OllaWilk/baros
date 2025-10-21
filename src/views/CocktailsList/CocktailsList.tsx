@@ -18,7 +18,7 @@ export const CocktailsList = () => {
   return (
     <div className={styles.cocktailsList}>
       <header className={styles.header}>
-        <h2>Our Coctails</h2>
+        <h2>Discover Your Next Favorite Cocktail</h2>
       </header>
       <ul className={styles.grid}>
         {data?.map((el) => (

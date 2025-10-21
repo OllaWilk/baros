@@ -2,76 +2,37 @@
 @use '../../styles/mixins' as *;
 
 .coctailCart {
-  display: flex;
-  flex-direction: column;
-//   background: var(--surface, #121212);
-  border-radius: var(--radius, 14px);
+  @include flex(column, center, center);
+  border-radius: $border-radius;
   overflow: hidden;
   position: relative;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: $transition;
 
   &:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
   }
 }
-
 
 .imageWrapper {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 4/4;
   overflow: hidden;
+  transition: $transition;
 
   img {
-    width: 100%;
-    height: 100%;
+    @include img;
     object-fit: cover;
-    transition: transform 0.4s ease;
-  }
-
-  .coctailCart:hover & img {
-    transform: scale(1.05);
   }
 }
 
-/* 💖 przycisk serduszka */
-.favoriteBtn {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  background: rgba(0, 0, 0, 0.4);
-  border: none;
-  border-radius: 50%;
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  cursor: pointer;
-  transition: background 0.25s ease, transform 0.25s ease;
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.6);
-    transform: scale(1.1);
-  }
-
-  &:active {
-    transform: scale(0.95);
-  }
-
-  .heartIcon {
-    width: 20px;
-    height: 20px;
-    stroke-width: 2px;
-  }
-}
-
-/* 📄 część tekstowa */
 .content {
   padding: 1rem 1.25rem 1.25rem;
   text-align: center;
+
+  @include sm-max {
+    padding: 0.75rem;
+    width: 100%;
+  }
 
   .name {
     font-size: 1.1rem;
@@ -86,33 +47,8 @@
 
   .type {
     font-size: 0.85rem;
-    color: #aaa;
+    color: var(--text);
     margin-bottom: 1rem;
   }
 }
 
-/* 🔘 przycisk „View details” */
-.detailsBtn {
-  @include btn(
-    $bg: linear-gradient(135deg, $color-primary-start, $color-primary-end),
-    $hover-bg: linear-gradient(135deg, $color-primary-hover-start, $color-primary-hover-end)
-  );
-
-  width: 100%;
-  font-size: 0.85rem;
-  letter-spacing: 0.04em;
-}
-
-/* 📱 Responsywność */
-@media (max-width: 480px) {
-  .coctailCart {
-    .content {
-      padding: 0.75rem;
-    }
-
-    .detailsBtn {
-      padding: 0.6rem 1rem;
-      font-size: 0.8rem;
-    }
-  }
-}
