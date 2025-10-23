@@ -23,8 +23,8 @@ export const CocktailsList = () => {
 
       <ul className={styles.grid}>
         {data?.map((el) => (
-          <li className={styles.item}>
-            <CoctailCart key={el.id} {...el} />
+          <li className={styles.item} key={el.id}>
+            <CoctailCart {...el} />
           </li>
         ))}
       </ul>

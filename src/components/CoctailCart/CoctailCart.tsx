@@ -3,8 +3,9 @@ import styles from './CoctailCart.module.scss';
 import { FavouriteBtn } from '../FavouriteBtn/FavouriteBtn';
 import { Btn } from '../Btn/Btn';
 
-export const CoctailCart = ({ name, category, imageUrl, alcoholic }: Cocktail) => {
+export const CoctailCart = ({ name, category, imageUrl, alcoholic, id }: Cocktail) => {
   const handleAddToFavorites = () => console.log('add to favourites');
+
   return (
     <article className={styles.coctailCart}>
       <div className={styles.imageWrapper}>
@@ -15,7 +16,7 @@ export const CoctailCart = ({ name, category, imageUrl, alcoholic }: Cocktail) =
         <h3 className={styles.name}>{name}</h3>
         <p className={styles.category}>{category}</p>
         <p className={styles.type}>{alcoholic ? 'Alcoholic' : 'Non-alcoholic'}</p>
-        <Btn text={'View details'} url={`/cocktails/${name}`} />
+        <Btn text={'View details'} url={`/cocktails/${id}`} />
       </div>
     </article>
   );

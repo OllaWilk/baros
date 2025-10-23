@@ -1,7 +1,7 @@
 export interface Cocktail {
   id: number;
   name: string;
-  imageUrl: string | null;
+  imageUrl: string ;
   category: string | null;
   glass?: string | null;
   alcoholic: boolean | null;
