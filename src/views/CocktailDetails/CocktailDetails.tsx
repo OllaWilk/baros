@@ -1,22 +1,57 @@
-import { useEffect } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
+import { fetchOneCocktail } from '../../utils/http';
+import type { CocktailIdParam } from '../../types/cocktails-types';
+import { IngredientsList, DetailsMedia, DetailsMeta, DetailsSection } from '../../components';
+import styles from './CoctailDetails.module.scss';
 
 export const CocktailDetails = () => {
-  const { coctailId } = useParams();
+  const cocktailId: CocktailIdParam = Number(useParams().coctailId);
+  console.log(cocktailId);
+  const {
+    data: cocktail,
+    isLoading,
+    error,
+    isFetching,
+  } = useQuery({
+    queryKey: ['cocktail'],
+    queryFn: () => fetchOneCocktail(cocktailId),
+    staleTime: 1000 * 60,
+    gcTime: 30000,
+    refetchOnWindowFocus: false,
+  });
 
-  useEffect(() => {
-    (async () => {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/cocktails/${coctailId}`);
+  console.log(cocktail);
 
-      if (!response.ok) {
-        const error = new Error('Failed to fetch cocktails');
-        throw error;
-      }
+  if (!cocktail || !Number.isFinite(cocktailId) || cocktailId <= 0)
+    return <p>Sorry coctail you are looking for does not exist</p>;
+  if (isLoading) return <p>Loading cocktails...</p>;
+  if (error instanceof Error) return <p>{error.message}</p>;
 
-      const json = await response.json();
-      console.log(json);
-    })();
-  }, []);
+  const { name, imageUrl, category, alcoholic, glass, instructions, ingredients } = cocktail;
 
-  return <div>Sorry, this page is under construction. Coctail ID: {coctailId} </div>;
+  return (
+    <article className={styles.details}>
+      <header className={styles.header}>
+        <DetailsMedia name={name} imageUrl={imageUrl} />
+        <DetailsMeta
+          name={name}
+          category={category}
+          alcoholic={alcoholic}
+          glass={glass || null}
+          isFetching={isFetching}
+        />
+      </header>
+      {instructions && (
+        <DetailsSection title="Instructions">
+          <p>{instructions}</p>
+        </DetailsSection>
+      )}
+      {ingredients?.length && (
+        <DetailsSection title="Ingredients">
+          <IngredientsList ingredients={ingredients} />
+        </DetailsSection>
+      )}
+    </article>
+  );
 };

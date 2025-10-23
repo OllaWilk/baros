@@ -1,0 +1,21 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.media {
+  flex: 0 0 280px; 
+  display: flex;
+  
+  .image {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+}
+
+.placeholder {
+@include flex(column, center, center);
+  font-size: 0.9rem;
+  color: var(--text);
+  padding: 3rem 2rem;
+}

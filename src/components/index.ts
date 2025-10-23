@@ -3,3 +3,7 @@ export { Navbar } from './Navbar/Navbar';
 export { Header } from './Header/Header';
 export { Logo } from './Logo/Logo';
 export { CoctailCart } from './CoctailCart/CoctailCart';
+export { DetailsMedia } from './DetailsMedia/DetailsMedia';
+export { DetailsMeta } from './DetailsMeta/DetailsMeta';
+export { DetailsSection } from './DetailsSection/DetailsSection';
+export { IngredientsList } from './IngredientsList/IngredientsList';
