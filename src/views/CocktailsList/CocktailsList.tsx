@@ -5,8 +5,8 @@ import styles from './CocktailsList.module.scss';
 
 export const CocktailsList = () => {
   const { data, isLoading, error } = useQuery({
-    queryKey: ['cocktails'],
-    queryFn: fetchCocktails,
+    queryKey: ['cocktails', { perPage: 500 }],
+    queryFn: () => fetchCocktails(500),
     staleTime: 1000 * 60,
     gcTime: 30000,
     refetchOnWindowFocus: false,
@@ -20,6 +20,7 @@ export const CocktailsList = () => {
       <header className={styles.header}>
         <h2>Discover Your Next Favorite Cocktail</h2>
       </header>
+
       <ul className={styles.grid}>
         {data?.map((el) => (
           <li className={styles.item}>

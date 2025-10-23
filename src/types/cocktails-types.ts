@@ -1,14 +1,15 @@
 export interface Cocktail {
   id: number;
   name: string;
-  imageUrl: string;
-  category: string;
-  alcoholic: boolean;
+  imageUrl: string | null;
+  category: string | null;
+  glass?: string | null;
+  alcoholic: boolean | null;
 }
 
 export interface CocktailFull extends Cocktail {
-  glass?: string;
   updatedAt?: string;
   instructions?: string;
   createdAt?: string;
+  /* ingredients: Ingredients */
 }
