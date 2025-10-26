@@ -7,14 +7,14 @@ import styles from './CoctailDetails.module.scss';
 
 export const CocktailDetails = () => {
   const cocktailId: CocktailIdParam = Number(useParams().coctailId);
-  console.log(cocktailId);
+
   const {
     data: cocktail,
     isLoading,
     error,
     isFetching,
   } = useQuery({
-    queryKey: ['cocktail'],
+    queryKey: ['cocktail', cocktailId],
     queryFn: () => fetchOneCocktail(cocktailId),
     staleTime: 1000 * 60,
     gcTime: 30000,
