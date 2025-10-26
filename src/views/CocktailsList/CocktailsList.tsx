@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { fetchCocktails } from '../../utils/http';
-import { CoctailCart } from '../../components';
+import { CoctailCart, LoadingIndicator } from '../../components';
 import styles from './CocktailsList.module.scss';
 
 export const CocktailsList = () => {
@@ -12,7 +12,7 @@ export const CocktailsList = () => {
     refetchOnWindowFocus: false,
   });
 
-  if (isLoading) return <p>Loading cocktails...</p>;
+  if (isLoading) return <LoadingIndicator text='Loading coctails...'/>;
   if (error instanceof Error) return <p>{error.message}</p>;
 
   return (

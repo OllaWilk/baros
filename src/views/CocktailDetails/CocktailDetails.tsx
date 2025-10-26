@@ -2,7 +2,13 @@ import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { fetchOneCocktail } from '../../utils/http';
 import type { CocktailIdParam } from '../../types/cocktails-types';
-import { IngredientsList, DetailsMedia, DetailsMeta, DetailsSection } from '../../components';
+import {
+  IngredientsList,
+  DetailsMedia,
+  DetailsMeta,
+  DetailsSection,
+  LoadingIndicator,
+} from '../../components';
 import styles from './CoctailDetails.module.scss';
 
 export const CocktailDetails = () => {
@@ -25,7 +31,8 @@ export const CocktailDetails = () => {
 
   if (!cocktail || !Number.isFinite(cocktailId) || cocktailId <= 0)
     return <p>Sorry coctail you are looking for does not exist</p>;
-  if (isLoading) return <p>Loading cocktails...</p>;
+  if (isLoading) return <LoadingIndicator />;
+
   if (error instanceof Error) return <p>{error.message}</p>;
 
   const { name, imageUrl, category, alcoholic, glass, instructions, ingredients } = cocktail;
