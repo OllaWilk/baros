@@ -7,7 +7,7 @@ This React + TypeScript application displays a list of cocktails fetched from an
 
 [![Live demo](./public/screenshot.png)](https://baros-sigma.vercel.app)
 
-**Live site:** [https://baros-sigma.vercel.app/cocktails](https://baros-sigma.vercel.app/cocktails)
+**Live site:** [https://baros-sigma.vercel.app](https://baros-sigma.vercel.app)
 
 ## ✨ Features
 
@@ -95,4 +95,5 @@ npm dev
 ✅ UI refinements and animations for better UX
 
 ## 🎉  Explore, sip, and enjoy your favorite cocktail!
+
 
