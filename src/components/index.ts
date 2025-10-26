@@ -8,3 +8,4 @@ export { DetailsMeta } from './DetailsMeta/DetailsMeta';
 export { DetailsSection } from './DetailsSection/DetailsSection';
 export { IngredientsList } from './IngredientsList/IngredientsList';
 export { LoadingIndicator } from './UI/LoadingIndicator';
+export { ErrorBlock } from './UI/ErrorBlock';

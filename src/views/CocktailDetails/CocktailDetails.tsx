@@ -8,6 +8,7 @@ import {
   DetailsMeta,
   DetailsSection,
   LoadingIndicator,
+  ErrorBlock,
 } from '../../components';
 import styles from './CoctailDetails.module.scss';
 
@@ -30,7 +31,7 @@ export const CocktailDetails = () => {
   console.log(cocktail);
 
   if (!cocktail || !Number.isFinite(cocktailId) || cocktailId <= 0)
-    return <p>Sorry coctail you are looking for does not exist</p>;
+    return <ErrorBlock title="An error occurred" message={'Sorry coctail you are looking for does not exist.'} />;
   if (isLoading) return <LoadingIndicator />;
 
   if (error instanceof Error) return <p>{error.message}</p>;

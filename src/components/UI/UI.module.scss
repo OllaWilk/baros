@@ -2,9 +2,9 @@
 @use '../../styles/mixins' as *;
 
 .ldsWrap {
-    @include container;
-    @include flex(column, center, center); 
-    min-height: 85vh;
+  @include container;
+  @include flex(column, center, center);
+  min-height: 85vh;
 }
 
 .ldsRing {
@@ -25,16 +25,17 @@
     border-radius: 50%;
     animation: ldsRing 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     border-color: var(--accent) transparent transparent transparent;
+
+    &:nth-child(1) {
+      animation-delay: -0.45s;
+    }
+    &:nth-child(2) {
+      animation-delay: -0.3s;
+    }
+    &:nth-child(3) {
+      animation-delay: -0.15s;
+    }
   }
-}
-.ldsRing div:nth-child(1) {
-  animation-delay: -0.45s;
-}
-.ldsRing div:nth-child(2) {
-  animation-delay: -0.3s;
-}
-.ldsRing div:nth-child(3) {
-  animation-delay: -0.15s;
 }
 
 @keyframes ldsRing {
@@ -43,5 +44,42 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+
+.errorBlock {
+  @include container;
+  background-color: #f0d9e5;
+  margin: 5rem auto;
+  padding: 1rem;
+  border-radius: 4px;
+  color: #890b35;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  text-align: left;
+  
+
+  .icon {
+    font-size: 2rem;
+    width: 3rem;
+    height: 3rem;
+    color: #fff;
+    background-color: #890b35;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .text h2 {
+    color: inherit;
+    font-size: 1.25rem;
+    margin: 0;
+  }
+
+  .text p {
+    margin: 0;
   }
 }
