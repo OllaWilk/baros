@@ -16,7 +16,7 @@ export const CoctailCart = ({ name, category, imageUrl, alcoholic, id }: Cocktai
         <h3 className={styles.name}>{name}</h3>
         <p className={styles.category}>{category}</p>
         <p className={styles.type}>{alcoholic ? 'Alcoholic' : 'Non-alcoholic'}</p>
-        <Btn text={'View details'} url={`/cocktails/${id}`} />
+        <Btn text={'View details'} url={`/cocktails/${id}`}   aria-label={`View details for ${name}`}/>
       </div>
     </article>
   );
