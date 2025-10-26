@@ -12,7 +12,6 @@ export const DetailsMeta = ({ name, category, alcoholic, glass, isFetching }: Pr
   return (
     <div className={styles.meta}>
       <h1 className={styles.title}>{name}</h1>
-
       <ul className={styles.list}>
         <li>
           <strong>Category:</strong> {category ?? '—'}

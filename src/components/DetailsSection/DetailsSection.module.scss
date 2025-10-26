@@ -1,0 +1,33 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+section {
+  background: var(--card);
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  padding: 24px 28px;
+  margin-top: 24px;
+
+  h2 {
+    font-size: 18px;
+    letter-spacing: 0.3px;
+    margin: 0 0 14px;
+    color: var(--text);
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 3px;
+      margin-top: 10px;
+      background: linear-gradient(90deg, var(--accent), var(--secondary));
+      border-radius: 4px;
+    }
+  }
+
+  p {
+    color: #e7e7e7;
+    line-height: 1.7;
+  }
+}

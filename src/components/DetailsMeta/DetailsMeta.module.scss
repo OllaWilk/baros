@@ -1,0 +1,56 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.meta {
+  background: var(--card);
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  padding: 28px 28px;
+  @include flex(column, flex-start, flex-start);
+  gap: 20px;
+}
+
+.title {
+  font-size: clamp(24px, 3.2vw, 32px);
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 24px;
+
+  @media (max-width: 680px) {
+    grid-template-columns: 1fr;
+  }
+
+  li {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: $border-radius;
+    padding: 12px 14px;
+    line-height: 1.5;
+
+    strong {
+      color: var(--muted);
+      font-weight: 600;
+      margin-right: 6px;
+    }
+  }
+}
+
+.hint {
+  align-self: flex-start;
+  background: rgba(255, 179, 71, 0.12); // akcent w tle
+  color: var(--accent);
+  border: 1px solid rgba(255, 179, 71, 0.35);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+}
