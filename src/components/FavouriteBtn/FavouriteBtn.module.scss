@@ -33,3 +33,10 @@
     stroke-width: 2px;
   }
 }
+
+.favoriteBtn.active .heartIcon {
+  fill: var(--accent);
+  width: 35px;
+    height: 35px;
+    stroke-width: 0px;
+}
