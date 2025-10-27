@@ -28,10 +28,13 @@ export const CocktailDetails = () => {
     refetchOnWindowFocus: false,
   });
 
-  console.log(cocktail);
-
   if (!cocktail || !Number.isFinite(cocktailId) || cocktailId <= 0)
-    return <ErrorBlock title="An error occurred" message={'Sorry coctail you are looking for does not exist.'} />;
+    return (
+      <ErrorBlock
+        title="An error occurred"
+        message={'Sorry coctail you are looking for does not exist.'}
+      />
+    );
   if (isLoading) return <LoadingIndicator />;
 
   if (error instanceof Error) return <p>{error.message}</p>;

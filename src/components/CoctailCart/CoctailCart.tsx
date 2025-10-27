@@ -19,12 +19,12 @@ export const CoctailCart = ({ name, category, imageUrl, alcoholic, id }: Cocktai
     <article className={styles.coctailCart}>
       <div className={styles.imageWrapper}>
         <img src={imageUrl} alt={name} />
-        <FavouriteBtn active={fav} onClick={handleAddToFavorites} />
       </div>
       <div className={styles.content}>
         <h3 className={styles.name}>{name}</h3>
         <p className={styles.category}>{category}</p>
         <p className={styles.type}>{alcoholic ? 'Alcoholic' : 'Non-alcoholic'}</p>
+        <FavouriteBtn active={fav} onClick={handleAddToFavorites} />
         <Btn
           text={'View details'}
           url={`/cocktails/${id}`}

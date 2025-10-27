@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { fetchCocktails } from './http';
 
-export function useCocktailsQuery(perPage = 500) {
+export const useCocktailsQuery = (perPage = 500) => {
   return useQuery({
     queryKey: ['cocktails', { perPage }],
     queryFn: () => fetchCocktails(perPage),
@@ -9,4 +9,6 @@ export function useCocktailsQuery(perPage = 500) {
     gcTime: 30000,
     refetchOnWindowFocus: false,
   });
-}
+};
+
+// export const

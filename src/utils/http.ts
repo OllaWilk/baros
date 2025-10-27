@@ -20,7 +20,6 @@ export const fetchCocktails = async (perPage = 500): Promise<Cocktail[]> => {
     alcoholic: coctail.category ?? null,
   }));
 
-  console.log(data)
   return cocktailData as Cocktail[];
 };
 
