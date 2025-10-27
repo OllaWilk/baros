@@ -32,11 +32,7 @@ export const CocktailsList = () => {
       <ul className={styles.grid}>
         {pageItems.map((el) => (
           <li className={styles.item} key={el.id}>
-            <Link
-              to={`/cocktails/${el.id}`}
-              aria-label={`View details for ${el.name}`}
-              className={styles.link}
-            >
+            <Link to={`/cocktails/${el.id}`} className={styles.link}>
               <CoctailCart {...el} />
             </Link>
           </li>

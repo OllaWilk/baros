@@ -1,13 +1,13 @@
+import { useNavigate } from 'react-router-dom';
 import type { Cocktail } from '../../types/cocktails-types';
 import { useFavouritesActions } from '../../utils/useFavouritesStorage';
 import { FavouriteBtn } from '../FavouriteBtn/FavouriteBtn';
-import { Btn } from '../Btn/Btn';
 import styles from './CoctailCart.module.scss';
 
 export const CoctailCart = ({ name, category, imageUrl, alcoholic, id }: Cocktail) => {
   const { toggleFavorite, isFavorite } = useFavouritesActions();
+  const navigate = useNavigate();
   const fav = isFavorite(id);
-  console.log(fav);
 
   const handleAddToFavorites = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -16,6 +16,11 @@ export const CoctailCart = ({ name, category, imageUrl, alcoholic, id }: Cocktai
     toggleFavorite({ id, name, category, imageUrl, alcoholic });
   };
 
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault(); // żeby nie kliknął rodzica-Linka
+    e.stopPropagation();
+    navigate(`/cocktails/${id}`);
+  };
   return (
     <article className={styles.coctailCart}>
       <div className={styles.imageWrapper}>
@@ -26,7 +31,14 @@ export const CoctailCart = ({ name, category, imageUrl, alcoholic, id }: Cocktai
         <p className={styles.category}>{category}</p>
         <p className={styles.type}>{alcoholic ? 'Alcoholic' : 'Non-alcoholic'}</p>
         <FavouriteBtn active={fav} onClick={handleAddToFavorites} />
-        <Btn text={'View details'} url={`/cocktails/${id}`} />
+        <button
+          type="button"
+          onClick={handleClick}
+          className={styles.detailsBtn}
+          aria-label={'View details'}
+        >
+          View details
+        </button>
       </div>
     </article>
   );
