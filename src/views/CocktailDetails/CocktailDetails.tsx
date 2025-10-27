@@ -1,6 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
-import { fetchOneCocktail } from '../../utils/http';
 import type { CocktailIdParam } from '../../types/cocktails-types';
 import {
   IngredientsList,
@@ -11,22 +9,11 @@ import {
   ErrorBlock,
 } from '../../components';
 import styles from './CoctailDetails.module.scss';
+import { useCocktailQueryById } from '../../utils/useCocktailsQuery';
 
 export const CocktailDetails = () => {
   const cocktailId: CocktailIdParam = Number(useParams().coctailId);
-
-  const {
-    data: cocktail,
-    isLoading,
-    error,
-    isFetching,
-  } = useQuery({
-    queryKey: ['cocktail', cocktailId],
-    queryFn: () => fetchOneCocktail(cocktailId),
-    staleTime: 1000 * 60,
-    gcTime: 30000,
-    refetchOnWindowFocus: false,
-  });
+  const { data: cocktail, isLoading, error, isFetching } = useCocktailQueryById(cocktailId);
 
   if (!cocktail || !Number.isFinite(cocktailId) || cocktailId <= 0)
     return (

@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { fetchCocktails } from './http';
+import type { CocktailIdParam, CocktailWithoutMeta } from '../types/cocktails-types';
+import { fetchCocktails, fetchOneCocktail } from './http';
 
 export const useCocktailsQuery = (perPage = 500) => {
   return useQuery({
@@ -11,4 +12,13 @@ export const useCocktailsQuery = (perPage = 500) => {
   });
 };
 
-// export const
+export const useCocktailQueryById = (id: CocktailIdParam | undefined) => {
+  return useQuery<CocktailWithoutMeta>({
+    queryKey: ['cocktail', id],
+    queryFn: () => fetchOneCocktail(Number(id)),
+    enabled: Number.isFinite(Number(id)) && Number(id) > 0,
+    staleTime: 60_000,
+    gcTime: 30_000,
+    refetchOnWindowFocus: false,
+  });
+};

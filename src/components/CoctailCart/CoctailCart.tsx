@@ -7,6 +7,7 @@ import styles from './CoctailCart.module.scss';
 export const CoctailCart = ({ name, category, imageUrl, alcoholic, id }: Cocktail) => {
   const { toggleFavorite, isFavorite } = useFavouritesActions();
   const fav = isFavorite(id);
+  console.log(fav);
 
   const handleAddToFavorites = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -25,11 +26,7 @@ export const CoctailCart = ({ name, category, imageUrl, alcoholic, id }: Cocktai
         <p className={styles.category}>{category}</p>
         <p className={styles.type}>{alcoholic ? 'Alcoholic' : 'Non-alcoholic'}</p>
         <FavouriteBtn active={fav} onClick={handleAddToFavorites} />
-        <Btn
-          text={'View details'}
-          url={`/cocktails/${id}`}
-          aria-label={`View details for ${name}`}
-        />
+        <Btn text={'View details'} url={`/cocktails/${id}`} />
       </div>
     </article>
   );
